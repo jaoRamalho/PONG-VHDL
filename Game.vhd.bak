@@ -1,0 +1,147 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity Game is
+    Port 
+    ( 
+        clk : in  STD_LOGIC; --- 50 Mhz
+        clk_60hz : in std_logic;
+        reset : in  STD_LOGIC;
+        
+        direita : in std_logic;
+        esquerda : in std_logic;
+        cima : in std_logic;
+        baixo : in std_logic;
+
+
+        out_red : out  STD_LOGIC_VECTOR (7 downto 0);
+        out_green : out  STD_LOGIC_VECTOR (]7 downto 0);
+        out_blue : out  STD_LOGIC_VECTOR (7 downto 0);
+        
+        hcount : in  STD_LOGIC_VECTOR (10 downto 0);
+        vcount : in  STD_LOGIC_VECTOR (10 downto 0);
+
+
+        randon_seed_posX : in std_logic_vector(10 downto 0);
+        random_seed_posY : in std_logic_vector(10 downto 0);
+
+        newSeed : buffer std_logic;
+
+        pontos : out std_logic_vector(7 downto 0);
+    );
+
+
+end Game;
+
+
+architecture Controle of Game is
+    constant resolucaoX : natural := 1920;
+    constant resolucaoY : natural := 1080;
+    
+    constant rgb_player : std_logic_vector(23 downto 0) := x"FF0000";
+    constant rgb_sky  : std_logic_vector(23 downto 0) := x"A0D0F0";
+    constant rgb_seed : std_logic_vector(23 downto 0) := x"00FF00";
+
+    signal red : STD_LOGIC_VECTOR (7 downto 0);
+    signal green : STD_LOGIC_VECTOR (7 downto 0);
+    signal blue : STD_LOGIC_VECTOR (7 downto 0);
+
+    signal posPlayerX : integer range 0 to resolucaoX - 1 := 0;
+    signal posPlayerY : integer range 0 to resolucaoY - 1 := 0;
+
+    signal seed_posx :  integer range 0 to resolucaoX - 1 := 0;
+    signal seed_posy : integer range 0 to resolucaoY - 1 := 0;
+
+    signal cont_pontos : integer range 0 to 255 := 0;
+
+    constant tamanho_player : integer := 10;
+
+    signal x : integer range 0 to 1919 := 0;
+    signal y : integer range 0 to 1079 := 0;
+
+begin
+   ------------------------------- EXECUTAR PLAYER --------------------------------
+
+   process (clk_60hz, clk)
+    begin
+        if rising_edge(clk_60hz) then
+            if direita = '1' then
+                posPlayerX <= posPlayerX + 1;
+            end if;
+
+            if esquerda = '1' then
+                posPlayerX <= posPlayerX - 1;
+            end if;
+
+            if cima = '1' then
+                posPlayerY <= posPlayerY - 1;
+            end if;
+
+            if baixo = '1' then
+                posPlayerY <= posPlayerY + 1;
+            end if;    
+        end if;
+    end process;
+
+    --------------------------------------------------------------------------------------------  
+
+  ------------------------------- EXECUTAR COLISAO E SEMENTES --------------------------------
+    process (clk, reset)
+    begin
+        if newSeed = '1' then
+            seed_posx <= to_integer(unsigned(randon_seed_posX)) mod resolucaoX -1;
+            seed_posy <= to_integer(unsigned(random_seed_posY)) mod resolucaoY -1;
+            newSeed <= '0';
+        end if;
+
+        if rising_edge(clk) then
+            if reset = '1' then
+                posPlayerX <= 0;
+                posPlayerY <= 0;
+                cont_pontos <= 0;
+            else
+                if( posPlayerX <= seed_posx and
+                    seed_posx <= posPlayerX + tamanho_player and
+                    posPlayerY <= seed_posy and 
+                    seed_posy <= posPlayerY + tamanho_player) then
+                    
+                    cont_pontos <= cont_pontos + 1;
+                    pontos <= std_logic_vector(to_unsigned(cont_pontos, 8));
+                    newSeed <= '1';
+                else
+                    newSeed <= '0';     
+                end if;
+            end if;
+        end if;
+    end process;
+
+    --------------------------------------------------------------------------------------------
+
+    ------------------------------- EXECUTAR CORES --------------------------------
+    process (clk)
+    begin
+        x <= to_integer(unsigned(hcount));
+        y <= to_integer(unsigned(vcount));
+
+        if( posPlayerX <= x and x <= posPlayerX + tamanho_player and
+            posPlayerY <= y and y <= posPlayerY + tamanho_player) then
+
+            red <= rgb_player(23 downto 16);
+            green <= rgb_player(15 downto 8);
+            blue <= rgb_player(7 downto 0);
+
+        elsif  seed_posx = x and seed_posy = y then
+            red <= rgb_seed(23 downto 16);
+            green <= rgb_seed(15 downto 8);
+            blue <= rgb_seed(7 downto 0);
+        else
+            red <= rgb_sky(23 downto 16);
+            green <= rgb_sky(15 downto 8);
+            blue <= rgb_sky(7 downto 0);
+        end if;
+    end process;
+
+    --------------------------------------------------------------------------------------------
+
+
+end Controle;

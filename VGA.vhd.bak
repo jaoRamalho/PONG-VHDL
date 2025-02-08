@@ -1,0 +1,79 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity VGA is
+    Port 
+    ( 
+        clk : in  STD_LOGIC; --- 50 Mhz
+        reset : in  STD_LOGIC;
+        
+        hsync : out  STD_LOGIC;  --- Horizontal Sync enviar 1080
+        vsync : out  STD_LOGIC; -- 60 hz
+
+        inRed : in  STD_LOGIC_VECTOR (7 downto 0);
+        inGreen : in  STD_LOGIC_VECTOR (7 downto 0);
+        inBlue : in  STD_LOGIC_VECTOR (7 downto 0);
+
+        out_clk : out  STD_LOGIC;
+
+        red : out  STD_LOGIC_VECTOR (7 downto 0);
+        green : out  STD_LOGIC_VECTOR (7 downto 0);
+        blue : out  STD_LOGIC_VECTOR (7 downto 0);
+        
+        hcount : out  STD_LOGIC_VECTOR (10 downto 0);
+        vcount : out  STD_LOGIC_VECTOR (10 downto 0)
+    );
+end VGA;
+
+architecture Controle of VGA if 
+    
+    constant resolucaoX : natural := 1920;
+    constant resolucaoY : natural := 1080;
+
+    signal Hcont : integer range 0 to resolucaoX - 1 := 0;
+    signal Vcont : integer range 0 to resolucaoY - 1 := 0;
+
+    constant fator : natural := 1;
+    signal cont : integer range 1 to fator := 1;
+
+begin
+    process(clk, reset)
+    begin
+       if(reset = '1') then
+            Hcont <= 0;
+            Vcont <= 0;
+            cont <= 0;
+        elsif rising_edge(clk) then
+                
+            -- Logica de controle de pixel
+            if(Hcont = 1919) then
+                Hcont <= 0;
+                hsync <= '1';
+
+                if(Vcont = 1079) then
+                    Vcont <= 0;
+                    vsync <= '1';
+                else
+                    vsync <= '0';
+                    Vcont <= Vcont + 1;
+                end if;
+
+            else
+                hsyc <= '0';
+                Hcont <= Hcont + 1;
+            end if;
+
+        end if;
+ 
+        hcount <= std_logic_vector(to_unsigned(Hcont, 11));
+        vcount <= std_logic_vector(to_unsigned(Vcont, 11));
+
+        red <= inRed;
+        green <= inGreen;
+        blue <= inBlue;
+
+    end process;
+
+    out_clk <= clk;
+
+end Controle;

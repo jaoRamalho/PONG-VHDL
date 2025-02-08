@@ -1,0 +1,201 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "hsync",
+					"strict" : false
+				},
+				{
+					"name" : "vsync",
+					"strict" : false
+				},
+				{
+					"name" : "r3",
+					"strict" : false
+				},
+				{
+					"name" : "r2",
+					"strict" : false
+				},
+				{
+					"name" : "r1",
+					"strict" : false
+				},
+				{
+					"name" : "r0",
+					"strict" : false
+				},
+				{
+					"name" : "g3",
+					"strict" : false
+				},
+				{
+					"name" : "g2",
+					"strict" : false
+				},
+				{
+					"name" : "g1",
+					"strict" : false
+				},
+				{
+					"name" : "g0",
+					"strict" : false
+				},
+				{
+					"name" : "b3",
+					"strict" : false
+				},
+				{
+					"name" : "b2",
+					"strict" : false
+				},
+				{
+					"name" : "b1",
+					"strict" : false
+				},
+				{
+					"name" : "b0",
+					"strict" : false
+				},
+				{
+					"name" : "H1A",
+					"strict" : false
+				},
+				{
+					"name" : "H1B",
+					"strict" : false
+				},
+				{
+					"name" : "H1C",
+					"strict" : false
+				},
+				{
+					"name" : "H1D",
+					"strict" : false
+				},
+				{
+					"name" : "H1E",
+					"strict" : false
+				},
+				{
+					"name" : "H1F",
+					"strict" : false
+				},
+				{
+					"name" : "H1G",
+					"strict" : false
+				},
+				{
+					"name" : "H0A",
+					"strict" : false
+				},
+				{
+					"name" : "H0B",
+					"strict" : false
+				},
+				{
+					"name" : "H0C",
+					"strict" : false
+				},
+				{
+					"name" : "H0D",
+					"strict" : false
+				},
+				{
+					"name" : "H0E",
+					"strict" : false
+				},
+				{
+					"name" : "H0F",
+					"strict" : false
+				},
+				{
+					"name" : "H0G",
+					"strict" : false
+				},
+				{
+					"name" : "H6A",
+					"strict" : false
+				},
+				{
+					"name" : "H6B",
+					"strict" : false
+				},
+				{
+					"name" : "H6C",
+					"strict" : false
+				},
+				{
+					"name" : "H6D",
+					"strict" : false
+				},
+				{
+					"name" : "H6E",
+					"strict" : false
+				},
+				{
+					"name" : "H6F",
+					"strict" : false
+				},
+				{
+					"name" : "H6G",
+					"strict" : false
+				},
+				{
+					"name" : "H5A",
+					"strict" : false
+				},
+				{
+					"name" : "H5B",
+					"strict" : false
+				},
+				{
+					"name" : "H5C",
+					"strict" : false
+				},
+				{
+					"name" : "H5D",
+					"strict" : false
+				},
+				{
+					"name" : "H5E",
+					"strict" : false
+				},
+				{
+					"name" : "H5F",
+					"strict" : false
+				},
+				{
+					"name" : "H5G",
+					"strict" : false
+				},
+				{
+					"name" : "rst",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "dir2",
+					"strict" : false
+				},
+				{
+					"name" : "key2",
+					"strict" : false
+				},
+				{
+					"name" : "dir1",
+					"strict" : false
+				},
+				{
+					"name" : "key",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,31 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity Random is
+    port (
+        clk : in std_logic;
+        reset : in std_logic;
+        random_number1 : out std_logic_vector(10 downto 0); -- 11 bits, para números de 0 a 2047
+        random_number2 : out std_logic_vector(10 downto 0)  -- 11 bits, para números de 0 a 2047
+    );
+end entity Random;
+
+architecture Behavioral of Random is
+    signal lfsr : std_logic_vector(31 downto 0);
+    signal rnd1, rnd2 : unsigned(10 downto 0);
+begin
+    process(clk, reset)
+    begin
+        if reset = '1' then
+            lfsr <= (others => '0');
+        elsif rising_edge(clk) then
+            lfsr <= lfsr(30 downto 0) & (lfsr(31) xor lfsr(27));
+            rnd1 <= unsigned(lfsr(10 downto 0)) mod 1920; -- limita o intervalo a 0-1919
+            rnd2 <= unsigned(lfsr(21 downto 11)) mod 1080; -- limita o intervalo a 0-1079
+        end if;
+    end process;
+
+    random_number1 <= std_logic_vector(rnd1);
+    random_number2 <= std_logic_vector(rnd2);
+end architecture Behavioral;

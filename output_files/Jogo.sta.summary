@@ -1,0 +1,113 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'Controles_clk:inst|out_40hz'
+Slack : -8.373
+TNS   : -686.631
+
+Type  : Slow 1200mV 85C Model Setup 'Controles_clk:inst|out_25mhz'
+Slack : -7.109
+TNS   : -181.077
+
+Type  : Slow 1200mV 85C Model Setup 'clk'
+Slack : -3.899
+TNS   : -38.978
+
+Type  : Slow 1200mV 85C Model Hold 'Controles_clk:inst|out_40hz'
+Slack : 0.322
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'Controles_clk:inst|out_25mhz'
+Slack : 0.433
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : 0.638
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -35.269
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Controles_clk:inst|out_40hz'
+Slack : -1.403
+TNS   : -143.106
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'Controles_clk:inst|out_25mhz'
+Slack : -1.403
+TNS   : -74.359
+
+Type  : Slow 1200mV 0C Model Setup 'Controles_clk:inst|out_40hz'
+Slack : -7.668
+TNS   : -620.505
+
+Type  : Slow 1200mV 0C Model Setup 'Controles_clk:inst|out_25mhz'
+Slack : -6.433
+TNS   : -162.389
+
+Type  : Slow 1200mV 0C Model Setup 'clk'
+Slack : -3.583
+TNS   : -33.624
+
+Type  : Slow 1200mV 0C Model Hold 'Controles_clk:inst|out_40hz'
+Slack : 0.289
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'Controles_clk:inst|out_25mhz'
+Slack : 0.397
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : 0.591
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -35.269
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Controles_clk:inst|out_40hz'
+Slack : -1.403
+TNS   : -143.106
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'Controles_clk:inst|out_25mhz'
+Slack : -1.403
+TNS   : -74.359
+
+Type  : Fast 1200mV 0C Model Setup 'Controles_clk:inst|out_40hz'
+Slack : -3.016
+TNS   : -228.633
+
+Type  : Fast 1200mV 0C Model Setup 'Controles_clk:inst|out_25mhz'
+Slack : -2.317
+TNS   : -44.463
+
+Type  : Fast 1200mV 0C Model Setup 'clk'
+Slack : -1.167
+TNS   : -4.537
+
+Type  : Fast 1200mV 0C Model Hold 'Controles_clk:inst|out_40hz'
+Slack : 0.140
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'Controles_clk:inst|out_25mhz'
+Slack : 0.173
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : 0.246
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -26.725
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Controles_clk:inst|out_40hz'
+Slack : -1.000
+TNS   : -102.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'Controles_clk:inst|out_25mhz'
+Slack : -1.000
+TNS   : -53.000
+
+------------------------------------------------------------
